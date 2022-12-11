@@ -8,8 +8,9 @@
     <body>
         <div class="menu-destinations">
             <ul class="listing-destinations"></ul>
+            <div id="distance">Hello</div>
+            <div id="position">Position</div>
         </div>
-        <div id="distance">Hello</div>
         <div id = "map">
             <div class="chat-box">   
                 <ul id="messages"></ul>
@@ -20,11 +21,12 @@
         </div>
         <div class="room">
             <ul class="listing-users">
-                <li onclick="toggleUser()" class="user" id="user1">Alex</li>
-                <li onclick="getDistance()" class="user" id="user2">Nicolas</li>
+                <li onclick="pinGoal()" class="user" id="user1">Alex</li>
+                <li onclick="pinLocation()" class="user" id="user2">Nicolas</li>
                 <li onclick="createMarker()" class="user" id="user3">Benoit</li>
             </ul>
         </div>
+        
         <script>
             let socket = io();
 
@@ -47,6 +49,8 @@
                 window.scrollTo(0, document.body.scrollHeight);
             });
         </script>
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="js/javascript_fichier_ou_vous_ecrivez_votre_jquery.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <script src="/script.js"></script>
