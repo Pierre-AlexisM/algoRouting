@@ -1,12 +1,20 @@
 {
-  "name": "socket-chat-example",
-  "version": "0.0.1",
-  "description": "my first socket.io app",
-  "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^4.1.2"
-  },
+  "name": "roomchatmap",
+  "version": "1.0.0",
+  "description": "Room pour la map",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js",
+    "dev" : "nodemon server"
+  },
+  "author": "Jonathan B",
+  "license": "IIM",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "socket.io": "^4.5.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

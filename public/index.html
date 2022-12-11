@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="css/style_j.css">
+</head>
+<body>
+    <div class="join-main">
+        <form action="" onsubmit="showHide();">
+            <!-- Choix du Username -->
+            <div class="form-control">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Enter username..."
+                    required
+                />
+            </div>
+            <!-- Choix de la Room -->
+            <div class="form-control">
+                <label for="room">Room</label>
+                <select name="room" id="room">
+                    <option value="Room_1">Room 1</option>
+                    <option value="Room_2">Room 2</option>
+                    <option value="Room_3">Room 3</option>
+                    <option value="Room_4">Room 4</option>
+                    <option value="Room_5">Room 5</option>
+                    <option value="Room_6">Room 6</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Join Chat</button>
+        </form>
+    </div>
+
+    <div class ="chat-container" id="hidden_div">
+        <header class="chat-header">
+          <a href="index.html" class="btn">Leave Room</a>
+        </header>
+        <main class="chat-main">
+          <div class="chat-sidebar">
+            <h1 id="room-name"></h1>
+            <h2 id="room-name"></h2>
+            <h3>Utilisateurs connectés</h3>
+            <ul id="users">
+            </ul>
+          </div>
+          <div class="chat-messages">
+          </div>
+        </main>
+        <div class="chat-form-container">
+          <form id="chat-form">
+            <input
+              id="msg"
+              type="text"
+              placeholder="Ecrivez votre message..."
+              required
+              autocomplete="off"
+            />
+            <button class="btn">Envoyer</button>
+          </form>
+        </div>
+      </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
