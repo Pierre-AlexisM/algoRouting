@@ -1,14 +1,21 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Room</title>
-    <link rel="stylesheet" href="css/style_j.css">
+    <title>Map</title>
+    <link rel="stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="join-main">
+
+  <div id="time-container">
+    <span>Vous aller mettre <span id="time-estimation"></span> heures pour rejoindre votre destination</span>
+</div>
+<div id = "map">
+</div>
+    <div class="chat-wrapper">
+      <div class="join-main">
         <form action="" onsubmit="showHide();">
             <!-- Choix du Username -->
             <div class="form-control">
@@ -36,38 +43,43 @@
             <button type="submit" class="btn">Join Chat</button>
         </form>
     </div>
-
-    <div class ="chat-container" id="hidden_div">
-        <header class="chat-header">
-          <a href="index.html" class="btn">Leave Room</a>
-        </header>
-        <main class="chat-main">
-          <div class="chat-sidebar">
-            <h1 id="room-name"></h1>
-            <h2 id="room-name"></h2>
-            <h3>Utilisateurs connectés</h3>
-            <ul id="users">
-            </ul>
+      <div class ="chat-container" id="hidden_div">
+          <header class="chat-header">
+            <a href="index.html" class="btn">Leave Room</a>
+          </header>
+          <main class="chat-main">
+            <div class="chat-sidebar">
+              <h1 id="room-name"></h1>
+              <h2 id="room-name"></h2>
+              <h3>Utilisateurs connectés</h3>
+              <ul id="users">
+              </ul>
+            </div>
+            <div class="chat-messages">
+            </div>
+          </main>
+          <div class="chat-form-container">
+            <form id="chat-form">
+              <input
+                id="msg"
+                type="text"
+                placeholder="Ecrivez votre message..."
+                required
+                autocomplete="off"
+              />
+              <button class="btn">Envoyer</button>
+            </form>
           </div>
-          <div class="chat-messages">
-          </div>
-        </main>
-        <div class="chat-form-container">
-          <form id="chat-form">
-            <input
-              id="msg"
-              type="text"
-              placeholder="Ecrivez votre message..."
-              required
-              autocomplete="off"
-            />
-            <button class="btn">Envoyer</button>
-          </form>
         </div>
-      </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="js/javascript_fichier_ou_vous_ecrivez_votre_jquery.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

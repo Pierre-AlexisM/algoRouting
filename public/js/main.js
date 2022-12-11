@@ -21,7 +21,6 @@ socket.on('roomUsers', ({room, users}) => {
 
 // Message provenant du serveur
 socket.on('message', message => {
-    console.log(message);
     outputMessage(message);
 
     // Scroll quand un msg est envoyé
@@ -65,43 +64,29 @@ function popupUsers() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
   }
-  
 
 // Ajouter nom users au DOM
 function outputUsers(users){
     userList.innerHTML = `
     ${users.map(user => `<li><div class="popup" onclick="popupUsers()">${user.username}
-    <span class="popuptext" id="myPopup"><b>${user.username}</b><br> ${user.room} <br> Temps de trajet : x minutes</span>
+    <span class="popuptext" id="myPopup"><b>${user.username}</b><br> ${user.room} <br> Temps pour rejoindre le 1er stop : <span id="renderTime"></span> heures</span>
   </div></li>`).join('')}
     `;
 }
 
+// Calcule des temps de trajets et injection dans le DOM
+function getDistance(from,by,to){
+    const container = document.getElementById('time-estimation');
+    const renderTime = document.getElementById('renderTime');
+    document.getElementById("time-container").style.opacity = "1";
+    let distanceTotal = (from.distanceTo(by) + by.distanceTo(to)).toFixed(0)/1000;
+    let distanceStop = from.distanceTo(by).toFixed(0)/1000;
+    speed = 5;
+    let routeTotal = (distanceTotal / speed).toFixed(2);
+    let routeStop = (distanceStop / speed).toFixed(2);
+    container.innerHTML = routeTotal;
+    renderTime.innerHTML =  routeStop;
+    console.log(container);
+}
 
 
-// // Get the chat container element
-// const chatContainer = document.querySelector('.chat-container');
-
-// // Get the join chat button
-// const joinChatButton = document.querySelector('.btn');
-
-// // Add a click event listener to the button
-// joinChatButton.addEventListener('click', () => {
-//   // Show the chat container element
-//   chatContainer.style.display = 'block';
-// });
-
-
-
-// function showHide() {
-//     document.getElementById("hidden_div").style.display = "block";
-// }
- 
-// function showHide() {
-//     var div = document.getElementById("hidden_div");
-//     if (div.style.display == 'none') {
-//       div.style.display = 'block';
-//     }
-//     // else {
-//     //   div.style.display = 'none';
-//     // }
-// };
