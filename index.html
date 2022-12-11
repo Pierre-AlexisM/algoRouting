@@ -4,6 +4,7 @@
         <title>Find your way</title>
         <link rel="stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
         <link rel="stylesheet" href = "style.css" />
+        <link rel="stylesheet" href="public/css/style_j.css">
     </head>
     <body>
         <div class="menu-destinations">
@@ -12,46 +13,73 @@
             <div id="position">Position</div>
         </div>
         <div id = "map">
-            <div class="chat-box">   
-                <ul id="messages"></ul>
-                <form id="form" action="">
-                    <input id="input" autocomplete="off" /><button>Send</button>
-                </form>
+        </div>
+
+
+        <div class="join-main">
+            <form action="" onsubmit="showHide();">
+                <!-- Choix du Username -->
+                <div class="form-control">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Enter username..."
+                        required
+                    />
+                </div>
+                <!-- Choix de la Room -->
+                <div class="form-control">
+                    <label for="room">Room</label>
+                    <select name="room" id="room">
+                        <option value="Room_1">Room 1</option>
+                        <option value="Room_2">Room 2</option>
+                        <option value="Room_3">Room 3</option>
+                        <option value="Room_4">Room 4</option>
+                        <option value="Room_5">Room 5</option>
+                        <option value="Room_6">Room 6</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Join Chat</button>
+            </form>
+        </div>
+    
+        <div class ="chat-container" id="hidden_div">
+            <header class="chat-header">
+              <a href="index.html" class="btn">Leave Room</a>
+            </header>
+            <main class="chat-main">
+              <div class="chat-sidebar">
+                <h1 id="room-name"></h1>
+                <h2 id="room-name"></h2>
+                <h3>Utilisateurs connectés</h3>
+                <ul id="users">
+                </ul>
+              </div>
+              <div class="chat-messages">
+              </div>
+            </main>
+            <div class="chat-form-container">
+              <form id="chat-form">
+                <input
+                  id="msg"
+                  type="text"
+                  placeholder="Ecrivez votre message..."
+                  required
+                  autocomplete="off"
+                />
+                <button class="btn">Envoyer</button>
+              </form>
             </div>
-        </div>
-        <div class="room">
-            <ul class="listing-users">
-                <li onclick="pinGoal()" class="user" id="user1">Alex</li>
-                <li onclick="pinLocation()" class="user" id="user2">Nicolas</li>
-                <li onclick="createMarker()" class="user" id="user3">Benoit</li>
-            </ul>
-        </div>
-        
-        <script>
-            let socket = io();
+          </div>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="public/js/main.js"></script>
 
-            let messages = document.getElementById('messages');
-            let form = document.getElementById('form');
-            let input = document.getElementById('input');
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                if (input.value) {
-                socket.emit('chat message', input.value);
-                input.value = '';
-                }
-            });
-
-            socket.on('chat message', function(msg) {
-                var item = document.createElement('li');
-                item.textContent = msg;
-                messages.appendChild(item);
-                window.scrollTo(0, document.body.scrollHeight);
-            });
-        </script>
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="js/javascript_fichier_ou_vous_ecrivez_votre_jquery.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
         <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <script src="/script.js"></script>
     </body>
